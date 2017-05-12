@@ -2,6 +2,12 @@
 
 Output markdown to CLI
 
+## Screenshot
+
+See an [example.md](example.md) rendered:
+
+![example.png](example.png)
+
 ## Installation
 
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
