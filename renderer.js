@@ -39,7 +39,7 @@ class Renderer {
 			utils.unescape,
 			utils.emoji,
 			text => utils.wrapAnsi(text, this.cli.width - (2 * level), {hard: this.cli.hard}),
-			text => utils.indentString(text, `${chalk.grey('|')} `, level),
+			text => utils.indentString(text, level, `${chalk.grey('|')} `),
 			utils.padding
 		);
 
@@ -76,7 +76,7 @@ class Renderer {
 		const flow = utils.compose(
 			utils.unescape,
 			utils.emoji,
-			text => utils.indentString(text, ` `, 2),
+			text => utils.indentString(text, 2, ' '),
 			text => text.replace(/\n+/g, '\n'),
 			text => utils.wrapList(text, this.cli.width, {hard: this.cli.hard}),
 			utils.padding

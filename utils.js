@@ -6,8 +6,8 @@ const emoji = require('node-emoji');
 const cardinal = require('cardinal');
 const flow = require('lodash.flow');
 const unescape = require('lodash.unescape');
-const trimRight = require('lodash.trimright');
-const trimLeft = require('lodash.trimleft');
+const trimEnd = require('lodash.trimend');
+const trimStart = require('lodash.trimstart');
 const indentString = require('indent-string');
 const wrapAnsi = require('wrap-ansi');
 
@@ -23,10 +23,10 @@ module.exports = {
 	padding,
 	compose: flow,
 	emoji: insertEmojis,
-	indent: text => indentString(text, ' ', 2),
+	indent: text => indentString(text, 2, ' '),
 	indentString,
-	trimRight,
-	trimLeft,
+	trimEnd,
+	trimStart,
 	wrapLine: wrapAnsi,
 	wrapList: (text, cols, opts) => {
 		const input = text.split('\n');
@@ -38,10 +38,10 @@ module.exports = {
 				const level = (regex[0].length || 0);
 				const lineWidth = cols - level - 2;
 				const compose = flow(
-					line => trimLeft(line, regex[0]),
+					line => trimStart(line, regex[0]),
 					line => wrapAnsi(line, lineWidth, opts),
-					line => indentString(line, ' ', level),
-					line => trimLeft(line),
+					line => indentString(line, level, ' '),
+					line => trimStart(line),
 					line => `${regex[0]}${line}`
 				);
 
