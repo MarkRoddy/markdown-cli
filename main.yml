@@ -1,0 +1,13 @@
+---
+
+- name: Markdown CLI
+  hosts: "*"
+  become: true
+  tasks:
+    - name: Markdown CLI Dependencies
+      package:
+        name: "{{ item }}"
+      with_items:
+        - nodejs
+        - nodejs-legacy
+        - npm
