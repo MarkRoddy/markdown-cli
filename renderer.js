@@ -139,7 +139,10 @@ class Renderer {
 		return text;
 	}
 	link(href, title, text) {
-		return chalk.magenta(href);
+		// const hasText = text && text !== href;
+		// return (hasText) ? `${chalk.blue(utils.emoji(text))} (${chalk.magenta(href)})` : chalk.magenta(href);
+		// return chalk.magenta(href);
+		return chalk.magenta(text);
 	}
 	image(href, title, text) {
 		return (title) ? `![${chalk.blue(text)} – ${chalk.blue(title)}](${chalk.magenta(href)})` : `![${chalk.blue(text)}](${chalk.magenta(href)})`;
